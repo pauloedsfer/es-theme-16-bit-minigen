@@ -1,0 +1,126 @@
+advision|Adventure Vision|advision
+amiga|Amiga|amiga
+amigacd32|Amiga CD32|amigacd32
+amstradcpc|CPC|amstradcpc
+apple2|Apple II|apple2
+bbcmicro|BBC Micro|bbcmicro
+cavestory|Cave Story|cavestory
+macintosh|Macintosh|vmac
+gx4000|GX4000|gx4000
+arcade|Arcade|arcade
+astrocade|Astrocade|astrocade
+channelf|ChannelF|channelf
+cps1|Capcom System I|cps1
+cps2|Capcom System II|cps2
+cps3|Capcom System III|cps3
+megaduck|Mega Duck|megaduck
+Daphne|Daphne|daphne
+alg|American Laser Games|alg
+mame2003|MAME2003|mame2003
+mame2010|MAME2010|mame
+Sega Atomiswave|Atomiswave|atomiswave
+naomi|Naomi|naomi
+3do|3DO|3do
+pokemonmini|Pokemon Mini|pokemonmini
+atari800|Atari 800|atari800
+atari2600|Atari 2600|atari2600
+atari5200|Atari 5200|atari5200
+atari7800|Atari 7800|atari7800
+atarist|Atari ST|atarist
+atarixegs|Atari XEGS|atarixegs
+jaguar|Atari Jaguar|atarijaguar
+atarilynx|Atari Lynx|atarilynx
+wonderswan|WonderSwan|wonderswan
+wonderswancolor|WonderSwan Color|wonderswancolor
+odyssey2|Odyssey2|odyssey2
+pcengine|PC Engine|pcengine
+pcenginecd|PC Engine CD|pcenginecd
+turbografx16|Turbografx 16|tg16
+turbografxcd|Turbografx CD|tg-cd
+supergrafx|Super Grafx|supergrafx
+famicom|Famicom|famicom
+famicom disk system|Famicom Disk System|fds
+sfc|Super Famicom|sfc
+nes|NES|nes
+snes|SuFami Turbo|sufami
+satellaview|Satellaview|satellaview
+snes|Super NES|snes
+snesmsu|Super NES CD|snesmsu1
+snes-hacks|Super NES Hacks|snes-hacks
+n64|N64|n64
+n64dd|N64DD|n64dd
+love2d|Love2d|love2d
+virtualboy|Virtualboy|virtualboy
+gb|Game Boy|gb
+gbc|Game Boy Color|gbc
+gba|Game Boy Advance|gba
+gameandwatch|Game and Watch|gameandwatch
+sgb|Super Game Boy|sgb
+nds|NDS|nds
+sg-1000|SG-1000|sg-1000
+mastersystem|Master System|mastersystem
+megadrive|Megadrive|megadrive
+megadrivemsu|Megadrive MSU|msumd
+genesis|Genesis|genesis
+segacd|Sega CD|segacd
+sega32x|Sega 32X|sega32x
+saturn|Saturn|saturn
+dreamcast|Dreamcast|dreamcast
+vmu|Dreamcast VMU|vmu
+gamegear|Game Gear|gamegear
+pico|Pico|pico
+neogeo|Neo Geo|neogeo
+neogeocd|Neo Geo CD|neogeocd
+ngp|Neo Geo Pocket|ngp
+ngpc|Neo Geo Pocket Color|ngpc
+openbor|OpenBOR|openbor
+psx|PlayStation|psx
+ppsspp|PlayStation Portable|psp
+pspminis|Playstation Portable Minis|pspminis
+intellivision|Intellivision|intellivision
+coleco|ColecoVision|colecovision
+tic-80|Tic-80|tic80
+vectrex|Vectrex|vectrex
+msx|MSX|msx
+msx2|MSX 2|msx2
+zx81|ZX81|zx81
+zxspectrum|ZX Spectrum|zxspectrum
+x1|Sharp X1|x1
+x68000|Sharp x68000|x68000
+c16|C16|c16
+c64|C64|c64
+c128|C128|c128
+vic20|VIC-20|vic20
+videopac|Videopac G7000|videopac
+pc98|PC98|pc98
+pcfx|PC-FX|pcfx
+msdos|DOS|msdos
+ti99|TI99|ti99
+supervision|Supervision|supervision
+doom|Doom|doom
+wolf|Wolfenstein|wolf
+arduboy|Arduboy|arduboy
+easyrpg|EasyRPG|easyrpg
+scv|Super Cassette Vision|scv
+microvision|Microvision|microvision
+onscripter|ONScripter|onscripter
+pico-8|PICO-8|pico-8
+palm|Palm|palm
+piece|P/ECE|piece
+puzzlescript|PuzzleScript|puzzlescript
+j2me|J2ME|j2me
+enterprise|Enterprise 64/128|e128
+videoton|TV-Computer|tvc
+vircon32|Vircon32|vircon32
+thomson|Theodore Thomson|thomson
+dragon32|Dragon 32/64|dragon32
+coco|Color Computer 3|coco
+wasm-4|WASM-4|wasm4
+lowresnx|LowRes NX|lowresnx
+solarus|Solarus|solarus
+ports|Ports|ports
+scummvm|SCUMM Virtual Machine|scummvm
+uzebox|Uzebox|uzebox
+videos|Movies|vhs
+options|Options|retropie
+retroarch|Retroarch|retroarch

@@ -1,0 +1,17 @@
+<!-- 16-Bit-Minigen: the layout for lying covers (the SNES, the Super Famicom, the N64): a wider cover, a narrower list -->
+<theme>
+	<formatVersion>3</formatVersion>
+	<view name="basic, detailed, video">
+		<image name="background" extra="true">
+			<path>./../art/bg_gamelist_wide.png</path>
+		</image>
+		<textlist name="gamelist">
+			<pos>0.0375 0.2083</pos>
+			<size>0.4594 0.6</size>
+		</textlist>
+		<image name="md_image">
+			<pos>0.7516 0.5083</pos>
+			<maxSize>0.4281 0.6</maxSize>
+		</image>
+	</view>
+</theme>

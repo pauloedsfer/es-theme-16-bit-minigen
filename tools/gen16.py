@@ -60,6 +60,16 @@ BITS={'8-BIT':('nes','famicom','fds','mastersystem','gamegear','sg-1000','gb','g
  '16-BIT':('megadrive','genesis','snes','sfc','snes-usa','snes-hacks','snesh','pcengine','tg16','supergrafx','neogeo','neogeocd','segacd','megacd','msumd','snesmsu1','sufami','satellaview','x68000','amiga','atarist','cps1','cps2','pico','lynx','pcenginecd','tg-cd'),
  '32-BIT':('psx','saturn','sega32x','32x','3do','gba','pcfx','cps3','atarijaguar','amigacd32','virtualboy'),
  '64-BIT':('n64','n64dd'),'128-BIT':('dreamcast','naomi','atomiswave')}
+INFO={}    # tools/system_info.txt: theme|bits|generation|year|three stripe colours
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'system_info.txt'),encoding='utf-8'):
+    line=line.strip()
+    if not line or line.startswith('#'): continue
+    t,b,g,y,c=(line.split('|')+['']*5)[:5]
+    INFO[t]=([x for x in (b,g,y) if x],[tuple(int(h[i:i+2],16) for i in (0,2,4)) for h in c.split(',')] if c else None)
+def side_label(theme):    # what the cartridge's side says: 16-BIT - 4TH GEN - 1989
+    return ' - '.join(INFO[theme][0]) if theme in INFO else bits(theme)
+def stripes(theme):
+    return INFO[theme][1] if theme in INFO and INFO[theme][1] else [RED,GOLD,BLUE]
 def bits(theme):
     for k,v in BITS.items():
         if theme in v: return k
@@ -68,7 +78,9 @@ def cart(full,col,theme=''):
     w,h=240,336; im=Image.new('RGBA',(w,h),(0,0,0,0)); d=ImageDraw.Draw(im)
     d.rounded_rectangle([0,0,w-1,h-1],radius=8,fill=(12,12,15),outline=(110,112,124),width=2)
     band=vgrad(30,h-8,(70,72,82),(30,31,36)); im.paste(band,(4,4)); d=ImageDraw.Draw(im)
-    t=Image.new('RGBA',(h-8,30),(0,0,0,0)); ImageDraw.Draw(t).text((10,5),bits(theme),font=F('Orbitron-Black',17),fill=(200,202,212))
+    label=side_label(theme); px=17
+    while px>9 and F('Orbitron-Black',px).getlength(label)>h-28: px-=1    # (the longest still fits the side)
+    t=Image.new('RGBA',(h-8,30),(0,0,0,0)); ImageDraw.Draw(t).text((10,15),label,font=F('Orbitron-Black',px),fill=(200,202,212),anchor='lm')
     t=t.rotate(90,expand=True); im.alpha_composite(t,(4,4))
     d.rectangle([40,8,w-8,70],fill=(0,0,0)); 
     words=full.upper().split(); lines=[];cur=''
@@ -96,7 +108,7 @@ def cart(full,col,theme=''):
         art=a.crop(((a.width-aw)//2,(a.height-ah)//2,(a.width-aw)//2+aw,(a.height-ah)//2+ah))
     im.paste(art,(40,76)); d=ImageDraw.Draw(im)
     d.rectangle([40,h-52,w-8,h-10],fill=(0,0,0)); d.rectangle([40,h-52,w-8,h-49],fill=col)
-    for i,c in enumerate([RED,GOLD,BLUE]): d.polygon([(w-70+i*14,h-42),(w-60+i*14,h-42),(w-66+i*14,h-18),(w-76+i*14,h-18)],fill=c)
+    for i,c in enumerate(stripes(theme)): d.polygon([(w-70+i*14,h-42),(w-60+i*14,h-42),(w-66+i*14,h-18),(w-76+i*14,h-18)],fill=c)
     return im
 def header(full):
     ct=chrome_text(full.upper(),F('Orbitron-Black',30),0.18)

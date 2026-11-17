@@ -18,7 +18,9 @@ for every system, a wide list and the game's cover alone. English below.*
 ## O que ele tem
 
 - **Cartuchos no carrossel**, um para cada um dos 136 sistemas do ArkOS: na lateral os bits, a geração e o ano
-  (16-BIT - 4TH GEN - 1989) e, embaixo, três faixas nas cores de cada console.
+  (16-BIT - 4TH GEN - 1989), um pôr do sol em degradê com as três cores do console e, embaixo, as mesmas três
+  faixas. Options, RetroArch, Ports, Movies e as coleções têm ícones próprios.
+- **As faixas do topo mudam com o sistema**, no carrossel e na lista de jogos.
 - **Lista larga e legível** (Exo 2) com a seleção em azul, e **só a capa** do jogo ao lado.
 - **Capas verticais e horizontais**: SNES, Super Famicom e N64 usam um layout com a capa mais larga.
 - **NO COVER** na cor do sistema quando o jogo não tem capa.
@@ -47,7 +49,7 @@ O tema mostra a **imagem principal** (`<image>`) de cada jogo. Para ver só a ca
   `layouts/snes.xml`) que inclui `portrait.xml` ou `landscape.xml`. Para mudar vários de uma vez, edite a lista
   `LANDSCAPE` em `tools/layouts.py` e rode `python3 tools/layouts.py . tools/systems.txt`.
 - **O que o cartucho diz e as suas cores**: `tools/system_info.txt` tem, para cada sistema, os bits, a geração, o
-  ano (o lançamento nas Américas) e as três cores das faixas, como `megadrive|16-BIT|4TH GEN|1989|E6007E,00A0E9,D4A017`.
+  ano (o lançamento nas Américas) e as três cores (faixas, sol e topo), como `megadrive|16-BIT|4TH GEN|1989|E6007E,00A0E9,D4A017`.
   Edite e gere os cartuchos de novo.
 - **Uma ilustração própria num cartucho**: coloque a imagem em `src-art/<sistema>.png` e gere os cartuchos de novo.
 

@@ -22,15 +22,28 @@ def chrome(txt,font):
     o=Image.new('RGBA',(w,h),(0,0,0,0)); o.paste(g,(0,0),m)
     sh=Image.new('RGBA',(w+6,h+4),(0,0,0,0)); sh.paste((0,0,0,255),(3,3),m); sh=sh.filter(ImageFilter.GaussianBlur(1.5)); sh.alpha_composite(o,(0,0))
     s=0.18; return sh.transform((int(sh.width+s*sh.height),sh.height),Image.AFFINE,(1,s,-s*sh.height,0,1,0),Image.BICUBIC)
-def nocover(col):
+PAL={}    # tools/system_info.txt: the system's three colours
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'system_info.txt'),encoding='utf-8'):
+    line=line.strip()
+    if line and not line.startswith('#'):
+        f=(line.split('|')+['']*5)[:5]
+        if f[4]: PAL[f[0]]=[tuple(int(h[i:i+2],16) for i in (0,2,4)) for h in f[4].split(',')]
+def mix(a,b,t): return tuple(int(a[i]+(b[i]-a[i])*t) for i in range(3))
+def lift(c,k=1.08,add=18): return tuple(min(255,int(v*k+add)) for v in c)
+def nocover(col,theme=''):
+    cs=PAL.get(theme,[col,lift(col,1.2,40),col])
+    sky,grid=cs[0],cs[1] if sum(cs[1])>90 else lift(cs[1],1,80)
     W,H=210,294; im=Image.new('RGB',(W,H),(0,0,0)); d=ImageDraw.Draw(im)
     hz=int(H*0.56)
-    for y in range(hz): t=y/hz; d.line([(0,y),(W,y)],fill=tuple(int(c*(0.08+0.55*t)) for c in col))
-    d.ellipse([W/2-52,hz-52,W/2+52,hz+52],fill=tuple(min(255,int(c*1.2+50)) for c in col))
-    for i in range(5): d.line([(0,hz-10-i*9),(W,hz-10-i*9)],fill=(0,0,0),width=3)
+    for y in range(hz): t=y/hz; d.line([(0,y),(W,y)],fill=tuple(int(c*(0.08+0.5*t)) for c in sky))
+    r=52; sun=Image.new('RGB',(2*r+1,2*r+1)); sd=ImageDraw.Draw(sun)
+    for x in range(2*r+1):
+        t=x/(2*r); sd.line([(x,0),(x,2*r)],fill=lift(mix(cs[0],cs[1],t*2) if t<0.5 else mix(cs[1],cs[2],(t-0.5)*2)))
+    m=Image.new('L',sun.size,0); ImageDraw.Draw(m).ellipse([0,0,2*r,2*r],fill=255); im.paste(sun,(W//2-r,hz-r),m)
+    for i in range(5): d.line([(0,hz-10-i*9),(W,hz-10-i*9)],fill=tuple(int(c*0.2) for c in sky),width=3)
     d.rectangle([0,hz,W,H],fill=(6,6,10))
-    for x in range(-W*2,W*3,20): d.line([(W/2+(x-W/2)*0.12,hz),(x,H)],fill=col)
-    for i in range(1,12): y=hz+(i**1.8)*1.7; d.line([(0,y),(W,y)],fill=col)
+    for x in range(-W*2,W*3,20): d.line([(W/2+(x-W/2)*0.12,hz),(x,H)],fill=grid)
+    for i in range(1,12): y=hz+(i**1.8)*1.7; d.line([(0,y),(W,y)],fill=grid)
     im=im.convert('RGBA')
     t=chrome('NO',F('Orbitron-Black',40)); im.alpha_composite(t,((W-t.width)//2,22))
     t=chrome('COVER',F('Orbitron-Black',40)); im.alpha_composite(t,((W-t.width)//2,66))
@@ -40,5 +53,5 @@ rows=[l.split('|') for l in open(SYSLIST).read().splitlines() if l.count('|')==2
 seen=set()
 for name,full,theme in rows+[('default','','default')]+[(t,'arcade',t) for t in ('auto-allgames','all','auto-favorites','favorites','auto-lastplayed','recent','custom-collections','collections','options')]:
     if theme and theme not in seen:
-        seen.add(theme); nocover(brand(name,full)).save(f'{OUT}/nocover/{theme}.png')
+        seen.add(theme); nocover(brand(name,full),theme).save(f'{OUT}/nocover/{theme}.png')
 print('nocover:',len(seen))
